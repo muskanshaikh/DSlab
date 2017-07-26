@@ -89,7 +89,5 @@ void convert(char in[],char post[])
 		s->a[s->[top]=opr;
 	}
 	char pop(stack *s)
-	{
-		if(s->top==-1)
-		{
-			
+	
+

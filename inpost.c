@@ -15,14 +15,14 @@ void convert(char[],char[]);
 
 int priority(char);
 
-char infix[30],postfix[30]);
+char infix[30],postfix[30];
 
 int main()
 
 {
 	char infix [30],postfix[30];
 	printf("\nEnter the infix expression");
-	scanf("%s"infix);
+	scanf("%s",infix);
 	convert(infix,postfix);
 	printf("\npostfix expression\n%s",postfix);
 	return 0;
@@ -31,8 +31,8 @@ int main()
 
 void convert(char in[],char post[])
 {
-	char=opr;
-	stack=s1;
+	char opr;
+	stack s1;
 	int j=0,i;
 	s1.top==-1;
 	for(i=0;in[i]!=0;i++)

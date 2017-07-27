@@ -49,7 +49,7 @@ int main(){
 	int choice,e;
 	do
 	{
-		printf(" 1.peek\n2.push \n3.pop\n 4.exit\n");
+		printf("\t\t\t MENU \n 1.peek \n2.push \n3.pop\n 4.exit\n");
 		printf("enter your choice");
 		scanf("%d",&choice);
 		switch(choice){

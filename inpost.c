@@ -1,5 +1,5 @@
 #include<stdio.h>
-#include<c.type.h>  
+#include<ctype.h>  
 
 typedef struct conversion
 {
@@ -89,5 +89,17 @@ void convert(char in[],char post[])
 		s->a[s->[top]=opr;
 	}
 	char pop(stack *s)
+	{
+		if(s->top==-1)
+	{
+		printf("stack overflow");
+		return 0;
+	}
+	else
+	{
+		char data=s->a[s->top--];
+		return data;
+	}
+}
 	
 

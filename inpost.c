@@ -34,10 +34,11 @@ void convert(char in[],char post[])
 	char opr;
 	stack s1;
 	int j=0,i;
-	s1.top==-1;
+	s1.top=-1;
 	for(i=0;in[i]!=0;i++)
 	{
 		if(isalpha(in[j])
+		{
 		post[j++]=in[i];
 		if(in[1]=='(')
 		push(&s1,in[i]);
@@ -86,7 +87,7 @@ void convert(char in[],char post[])
 	void push(stack *s,char opr)
 	{
 		s->top++;
-		s->a[s->[top]=opr;
+		s->a[s->[top]]=opr;
 	}
 	char pop(stack *s)
 	{

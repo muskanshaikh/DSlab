@@ -44,12 +44,17 @@ void deletequeue()
 	{
 	front=rear=-1;
 }
-}
     else
     {
 	front++;
 }
 	printf("element deleted is %d",d);
+}
+	else
+	{
+		printf("queue is empty");
+	}
+	
 }
 	
 	

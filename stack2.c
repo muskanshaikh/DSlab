@@ -20,7 +20,7 @@ int peek(){
 
 void push(int e){
 	//inserts an element into stack
-	if(!isFull)
+	if(!isFull())
 	{
 		top++;
 		stack[top]==e;
@@ -34,7 +34,7 @@ void push(int e){
 void pop(int e){
 	//delete element from stack
 	int d;
-	if(!isEmpty)
+	if(!isEmpty())
 	{
 		d=stack[top];
 		top--;
@@ -49,7 +49,7 @@ int main(){
 	int choice,e;
 	do
 	{
-		printf("\t\t\t MENU \n 1.peek \n2.push \n3.pop\n 4.exit\n");
+		printf("\t\t\t \nMENU \n 1.peek \n 2.push \n 3.pop\n 4.exit\n");
 		printf("enter your choice");
 		scanf("%d",&choice);
 		switch(choice){

@@ -3,7 +3,7 @@
 
 typedef struct conversion
 {
-   char a[30];
+  int data[50];
    int top;
 }stack;
 
@@ -17,6 +17,14 @@ int priority(char);
 
 char infix[30],postfix[30];
 
+int isEmpty(stack *s1)
+{
+	if(s1->top==-1)
+	return 1;
+	else 
+	return 0;
+}
+
 int main()
 
 {
@@ -24,83 +32,76 @@ int main()
 	printf("\nEnter the infix expression");
 	scanf("%s",infix);
 	convert(infix,postfix);
-	printf("\npostfix expression\n%s",postfix);
+	printf("\npostfix expression\n%s1",postfix);
 	return 0;
 
 }
-
-void convert(char in[],char post[])
+void convert(char in[] ,char postfix[])
 {
-	char opr;
+	int i,j;
+	int c,sc;
 	stack s1;
-	int j=0,i;
 	s1.top=-1;
-	for(i=0;in[i]!=0;i++)
+	for(i=0,j=0;in[i]!='\0';i++)
 	{
-		if(isalpha(in[j])
+		c=infix[i];
+		switch (c)
 		{
-		post[j++]=in[i];
-		if(in[1]=='(')
-		push(&s1,in[i]);
-		if(in[1]=='='||in[i]=='/'||in[i]=='*')
-		{
-			if(s1.top!=-1)
-			{
-				opr=pop(&s1);
-				while(priority(opr)>=priority(in[1]))
-				{
-					post[j++]=opr;
-					opr=pop(&s1);
-				}
-				push(&s1,opr);
-				push(&s1,in[1]);
-			}
-			else
-			{
-				push(&s1,in[i]);
-			}
-			if(in[i]==')')
-			{
-				opr=pop(&s1);
-				while(opr!='(')
-				{
-					post[j++]=opr;
-					opr=pop(&s1);
-				}
-			}
+			case '(':
+			push(&s1,c);
+			break;
+			case ')':
+			while((sc=pop(&s1))!='(')
+			postfix[j++]=sc;
+			break;
+			case '+':
+			case '-':
+			case '/':
+			case '*':
+			case '^':
+			case '$':
+			while (!isEmpty(&s1)&&(priority(s1.data[s1.top]))>=priority(c))
+			postfix[j++]=pop(&s1);
+			push(&s1,c);
+			break;
+			default:
+			postfix[j++]=c;
+			break;
 		}
-		while(s1.top!=-1)
-		post[j++]=pop(&s1);
-		post[j]='\0';
-	}
-	int priority(char c)
-	{
-		if(c=='$')
-		return 3;
-		if(c=='/'||c=='*')
-		return 2;
-		if(c=='+'||c=='-')
-		return 1;
-		else 
-		return 0;
-	}
-	void push(stack *s,char opr)
-	{
-		s->top++;
-		s->a[s->[top]]=opr;
-	}
-	char pop(stack *s)
-	{
-		if(s->top==-1)
-	{
-		printf("stack overflow");
-		return 0;
-	}
-	else
-	{
-		char data=s->a[s->top--];
-		return data;
-	}
+	while(!isEmpty(&s1))
+		postfix[j++]=pop(&s1);
+	postfix[j]='\0';
+ }
 }
-	
+int priority(char d)
+{
+	 if(d=='$')
+		return 3;
+	 if(d=='/'||d=='*')
+		return 2;
+	 if(d=='+'||d=='-')
+		return 1;
+	 else
+		return 0;
+}
+
+void push(stack *s1,char opr)
+{
+	s1->top++;
+	s1->data[s1->top]=opr;
+}
+
+char pop(stack *s1)
+{
+	if (s1->top==-1)
+	{
+		printf("stack is empty\n");
+		return 0;
+    }
+    else
+    {
+		char data=s1->data[s1->top--];
+		return data;
+    }
+}
 

@@ -86,7 +86,7 @@ void checkcontinuity (char exp[])
 		printf("expression is invalid");
 		return ;
 }
-			t
+	
 	
 			
 int main()
@@ -100,4 +100,4 @@ int main()
 	
 }
 	
-	
+

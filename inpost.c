@@ -3,7 +3,7 @@
 
 typedef struct conversion
 {
-  int data[50];
+   char a[30];
    int top;
 }stack;
 
@@ -17,14 +17,6 @@ int priority(char);
 
 char infix[30],postfix[30];
 
-int isEmpty(stack *s1)
-{
-	if(s1->top==-1)
-	return 1;
-	else 
-	return 0;
-}
-
 int main()
 
 {
@@ -32,76 +24,79 @@ int main()
 	printf("\nEnter the infix expression");
 	scanf("%s",infix);
 	convert(infix,postfix);
-	printf("\npostfix expression\n%s1",postfix);
+	printf("\npostfix expression\n%s",postfix);
 	return 0;
 
 }
-void convert(char in[] ,char postfix[])
+void convert(char in[],char post[])
 {
-	int i,j;
-	int c,sc;
+	char opr;
 	stack s1;
+	int j=0,i;
 	s1.top=-1;
-	for(i=0,j=0;in[i]!='\0';i++)
+	for(i=0;in[i]!='\0';i++)
 	{
-		c=infix[i];
-		switch (c)
+		if(isalpha(in[i]))
+			post[j++]=in[i];
+		if(in[i]=='(')
+			push(&s1,in[i]);
+		if(in[i]=='+'||in[i]=='-'||in[i]=='/'||in[i]=='*')
 		{
-			case '(':
-			push(&s1,c);
-			break;
-			case ')':
-			while((sc=pop(&s1))!='(')
-			postfix[j++]=sc;
-			break;
-			case '+':
-			case '-':
-			case '/':
-			case '*':
-			case '^':
-			case '$':
-			while (!isEmpty(&s1)&&(priority(s1.data[s1.top]))>=priority(c))
-			postfix[j++]=pop(&s1);
-			push(&s1,c);
-			break;
-			default:
-			postfix[j++]=c;
-			break;
+			if(s1.top!=-1)
+			{
+				opr=pop(&s1);
+				while(priority(opr)>=priority(in[i]))
+				{
+					 post[j++]=opr;
+					 opr=pop(&s1);
+				}
+				push(&s1,opr);
+				push(&s1,in[i]);
+			}
+			else
+				push(&s1,in[i]);
 		}
-	while(!isEmpty(&s1))
-		postfix[j++]=pop(&s1);
-	postfix[j]='\0';
+		if(in[i]==')')
+		{
+			opr=pop(&s1);
+			while(opr!='(')
+			{
+				post[j++]=opr;
+				opr=pop(&s1);
+			}
+		}
+	}
+	while(s1.top!=-1)
+		post[j++]=pop(&s1);
+	post[j]='\0';
  }
-}
-int priority(char d)
+int priority(char c)
 {
-	 if(d=='$')
+		if(c=='$')
 		return 3;
-	 if(d=='/'||d=='*')
+		if(c=='/'||c=='*')
 		return 2;
-	 if(d=='+'||d=='-')
+		if(c=='+'||c=='-')
 		return 1;
-	 else
+		else 
 		return 0;
 }
-
-void push(stack *s1,char opr)
+void push(stack *s,char opr)
 {
-	s1->top++;
-	s1->data[s1->top]=opr;
+		s->top++;
+		s->a[s->top]=opr;
 }
-
-char pop(stack *s1)
+char pop(stack *s)
 {
-	if (s1->top==-1)
+		if(s->top==-1)
 	{
-		printf("stack is empty\n");
+		printf("stack overflow");
 		return 0;
-    }
-    else
-    {
-		char data=s1->data[s1->top--];
+	}
+	else
+	{
+		char data=s->a[s->top--];
 		return data;
-    }
+	}
 }
 

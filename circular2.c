@@ -6,7 +6,12 @@
 int queue[MAX_SIZE],rear=-1,front=-1;
 
 int isFull(){
+<<<<<<< HEAD
 	return ((rear==MAX_SIZE-1 && front==0)||(rear+1==front));
+=======
+	//returns 1 if queue is full else returns -1
+	return ((rear==MAX_SIZE-1 && front==0) || (rear+1==front));
+>>>>>>> 8dfc1aac39c9d1751b57c77b5b7597f50a08706e
 }
 
 int isEmpty(){
@@ -18,7 +23,7 @@ int peek(){
 	//return element at the top of queue
 	return  queue[front];
 }
-void insertqueue (int d)
+void insertqueue(int d)
 {
 	if(!isFull())
 	{ 
@@ -56,6 +61,7 @@ void deletequeue()
 	}
 	
 }
+
 	
 	
 	
@@ -72,7 +78,7 @@ int main(){
 		      if(isEmpty())
 		      printf("queue is empty");
 		      else
-		     e=peek();//all peek function
+		     e=peek(); //all peek function
 		     printf("\nelement at the top of queue %d",e);
 		     break;
 		case 2:printf("enter the element to be inserted");

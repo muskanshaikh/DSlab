@@ -33,6 +33,7 @@ else
 	return data;
 }
 }
+
 int operation(int num1,int num2,char opr)
 {
 	switch(opr)
@@ -46,7 +47,8 @@ int operation(int num1,int num2,char opr)
 		case '*':
 		        return (num1*num2);
 	}
-}
+  }
+  
 int evaluate (char post[])
 {
 	int result,n1,n2,i=0;

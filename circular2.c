@@ -71,7 +71,7 @@ int main(){
 		scanf("%d",&choice);
 		switch(choice){
 		case 1:
-		      if(isEmpty())
+		      if(isEmpty())ttt
 		      printf("queue is empty");
 		      else
 		     e=peek(); //all peek function

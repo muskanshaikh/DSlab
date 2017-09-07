@@ -6,8 +6,12 @@
 int queue[MAX_SIZE],rear=-1,front=-1;
 
 int isFull(){
+<<<<<<< HEAD
+	return ((rear==MAX_SIZE-1 && front==0)||(rear+1==front));
+=======
 	//returns 1 if queue is full else returns -1
 	return ((rear==MAX_SIZE-1 && front==0) || (rear+1==front));
+>>>>>>> 8dfc1aac39c9d1751b57c77b5b7597f50a08706e
 }
 
 int isEmpty(){
@@ -97,6 +101,3 @@ int main(){
 	}while(1);
 	return 0;
 }
-
-
-

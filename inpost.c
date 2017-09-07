@@ -99,5 +99,3 @@ char pop(stack *s)
 		return data;
 	}
 }
-	
-

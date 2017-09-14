@@ -96,15 +96,15 @@ void delete(node **q,int num){
 		    if(temp->left==NULL&&temp->right==NULL)
 		       free(temp);
 		    
-		  return 1;
+		  return;
 	   }
 		else{
-		     if(num>q->data)
+		     if(num>temp->data)
 		     {
-				 delete(q->right,num);
+				 delete(&temp->right,num);
 		     }
 		   else{
-            delete(q->left,num);
+            delete(&temp->left,num);
 		   }
 	   }
    }

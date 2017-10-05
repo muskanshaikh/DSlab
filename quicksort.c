@@ -68,3 +68,24 @@ int main()
 	}
 	return 0;
 }
+/*output
+ * Enter the no of elements5
+Enter the elements 
+3
+6
+34
+7
+5
+sorted array is
+3
+5
+6
+7
+34
+
+
+------------------
+(program exited with code: 0)
+Press return to continue
+*/
+

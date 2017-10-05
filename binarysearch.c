@@ -47,3 +47,19 @@ int main()
  }
 	
 	
+/*output
+ * 
+Enter the no of elements5
+Enter the elements in ascending order
+7
+8
+9
+10
+11
+Enter the elements to be search9
+number is located on 2
+
+------------------
+(program exited with code: 0)
+Press return to continue
+*/

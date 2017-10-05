@@ -52,10 +52,10 @@ int search_bst(node *q,int num){
 		else{
 		     if(num>q->data)
 		     {
-				 search_bst(q->right,num);
+				return search_bst(q->right,num);
 		     }
 		   else{
-            search_bst(q->left,num);
+            return search_bst(q->left,num);
 		   }
 	   }
    }
@@ -113,7 +113,7 @@ void delete(node **q,int num){
 		    parent->left=x->left;
 	}
 	//x has right child
-	else if(x->right!=NULL && x->right==NULL)
+	else if(x->right!=NULL && x->left==NULL)
 	{
 		if(x->data >parent->data)
 		    parent->right=x->right;
